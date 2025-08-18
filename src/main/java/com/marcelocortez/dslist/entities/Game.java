@@ -17,21 +17,27 @@ public class Game {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	private Double score;
 	
 	@Column(name = "game_year")
 	private Integer year;
 	private String genre;
 	private String platform;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	public Game() {}
 
-	public Game(Long id, String title, Integer year, String genre, String platform, String imgUrl,
+	public Game(Long id, String title, Double score, Integer year, String genre, String platform, String imgUrl,
 			String shortDescription, String longDescription) {		
 		this.id = id;
 		this.title = title;
+		this.score = score;
 		this.year = year;
 		this.genre = genre;
 		this.platform = platform;
@@ -119,6 +125,14 @@ public class Game {
 			return false;
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
 	}
 	
 	
